@@ -14,12 +14,12 @@ config.set_main_option(
 )  # Указываем путь до бд
 
 
-
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
 target_metadata = Base.metadata
+
 
 def run_migrations_offline() -> None:
 
@@ -50,7 +50,8 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata,
+            connection=connection,
+            target_metadata=target_metadata,
             compare_server_default=True,
         )
 
